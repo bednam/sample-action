@@ -8,6 +8,7 @@ async function run() {
 	  // console.log(commentsEndpoint) ok
 
 	// auth like this?
+	  console.log("refresh?")
 	const myToken = core.getInput('myToken');
 	const octokit = new github.Github(myToken);
 	  // const octokit = new github.GitHub(github.token, {
