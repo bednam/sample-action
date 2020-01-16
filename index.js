@@ -8,12 +8,14 @@ const github = require('@actions/github'); // deps from toolkit or marketplace
 	  // console.log(commentsEndpoint) ok
 
 	// auth like this?
-	const octokit = new github.Github()
+	const myToken = core.getInput('myToken');
+	console.log(myToken)
+	const octokit = new github.Github(myToken)
 	  // const octokit = new github.GitHub(github.token, {
 	  // 	previews: ['comfort-fade-preview']
 	  // });
 
-	  const comments = await octokit.request(commentsEndpoint)
+	  const comments = await octokit.request(commentsUrl)
 	  console.log(comments)
 
 	} catch (error) {
