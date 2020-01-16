@@ -3,7 +3,7 @@ const github = require('@actions/github'); // deps from toolkit or marketplace
 
 (async () => {
 	try {
-	  const commentsUrl = github.context.payload.pull_request.links.review_comments.href
+	  const commentsUrl = github.context.payload.pull_request._links.review_comments.href
 	  const commentsEndpoint = commentsUrl.replace('https://api.github.com', '')
 	  console.log(commentsEndpoint)
 
