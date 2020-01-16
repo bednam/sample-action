@@ -10,10 +10,9 @@ async function run() {
 	// auth like this?
 	  console.log("refresh?")
 	const myToken = core.getInput('myToken');
-	const octokit = new github.GitHub(myToken);
-	  // const octokit = new github.GitHub(github.token, {
-	  // 	previews: ['comfort-fade-preview']
-	  // });
+	const octokit = new github.GitHub(myToken, {
+		previews: ["comfort-fade-preview"]
+	});
 
 	  const comments = await octokit.request(commentsUrl)
 	  console.log(comments)
