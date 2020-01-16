@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github'); // deps from toolkit or marketplace
 
-(async () => {
+async function run() {
 	try {
 	  const commentsUrl = github.context.payload.pull_request._links.review_comments.href
 	  const commentsEndpoint = commentsUrl.replace('https://api.github.com', '')
@@ -20,4 +20,6 @@ const github = require('@actions/github'); // deps from toolkit or marketplace
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
-})()
+}
+
+run();
