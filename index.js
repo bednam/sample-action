@@ -10,7 +10,7 @@ async function run() {
 	// auth like this?
 	  console.log("refresh?")
 	const myToken = core.getInput('myToken');
-	const octokit = new github.Github(myToken);
+	const octokit = new github.GitHub(myToken);
 	  // const octokit = new github.GitHub(github.token, {
 	  // 	previews: ['comfort-fade-preview']
 	  // });
