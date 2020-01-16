@@ -5,9 +5,10 @@ const github = require('@actions/github'); // deps from toolkit or marketplace
 	try {
 	  const commentsUrl = github.context.payload.pull_request._links.review_comments.href
 	  const commentsEndpoint = commentsUrl.replace('https://api.github.com', '')
-	  console.log(commentsEndpoint)
+	  // console.log(commentsEndpoint) ok
 
 	// auth like this?
+	console.log(github.token)
 	  const octokit = new github.GitHub(github.token, {
 	  	previews: ['comfort-fade-preview']
 	  });
