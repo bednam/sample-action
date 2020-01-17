@@ -16,9 +16,14 @@ async function run() {
 	const octokit = new github.GitHub(myToken, {
 		previews: ["comfort-fade-preview", "everest-preview"]
 	});
+		
+	const storageKey = core.getInput('storage-key')
 
+	const storageOctokit = new github.GitHub(storageKey, {
+		previews: ["comfort-fade-preview", "everest-preview"]
+	});
 	//const comments = await octokit.request(commentsUrl)
-	octokit.repos.createOrUpdateFile({
+	storageOctokit.repos.createOrUpdateFile({
 	  owner: 'MichalBednarz',
 	  repo: 'simplefeed',
 	  path: 'MichalBednarz/simplefeed/test',
