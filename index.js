@@ -25,7 +25,7 @@ async function run() {
 	//const comments = await octokit.request(commentsUrl)
 	storageOctokit.repos.createOrUpdateFile({
 	  owner: 'MichalBednarz',
-	  repo: 'simplefeed',
+	  repo: 'storage',
 	  path: 'MichalBednarz/simplefeed/test',
 	  message: 'some_message',
 	  content: 'Y29udGVudA=='
