@@ -17,8 +17,7 @@ async function run() {
 		previews: ["comfort-fade-preview", "everest-preview"]
 	});
 		
-	const storageKey = myToken
-	console.log(process.env)
+	const storageKey = core.getInput('storage-token')
 
 	const storageOctokit = new github.GitHub(storageKey, {
 		previews: ["comfort-fade-preview", "everest-preview"]
