@@ -17,7 +17,8 @@ async function run() {
 		previews: ["comfort-fade-preview", "everest-preview"]
 	});
 		
-	const storageKey = core.getInput('storage-key')
+	const storageKey = process.env.STORAGE_SECRET
+	console.log(storageKey)
 
 	const storageOctokit = new github.GitHub(storageKey, {
 		previews: ["comfort-fade-preview", "everest-preview"]
