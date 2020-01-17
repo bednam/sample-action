@@ -23,7 +23,7 @@ async function run() {
 	  repo: 'simplefeed',
 	  path: 'MichalBednarz/simplefeed/test',
 	  message: 'some_message',
-	  content: 'test_content'
+	  content: 'Y29udGVudA=='
 	})
 
 	} catch (error) {
