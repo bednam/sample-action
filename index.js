@@ -21,7 +21,7 @@ async function run() {
 	octokit.repos.createOrUpdateFile({
 	  owner: 'MichalBednarz',
 	  repo: 'simplefeed',
-	  path: 'MichalBednarz/simplefeed/test/',
+	  path: 'MichalBednarz/simplefeed/test',
 	  message: 'some_message',
 	  content: 'test_content'
 	})
