@@ -2,6 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github'); 
 
 async function run() {
+	// TODO closed and merged
 	try {
 		const {
 			context: {
