@@ -21,13 +21,14 @@ async function run() {
 		});
 
 		const comments = await octokit.request(commentsUrl)
+		const content = Buffer.from(JSON.stringify(comments)).toString('base64')
 
 		octokit.repos.createOrUpdateFile({
 		  owner: repository.owner.login,
 		  repo: repository.name,
 		  path: '.storage',
 		  message: 'Add context for PR ' + pull_request.number,
-		  content: btoa(JSON.stringify(comments))
+		  content
 		})
 
 	} catch (error) {
