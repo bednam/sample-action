@@ -6,7 +6,8 @@ async function run() {
 		const {
 			context: {
 				payload: {
-					pull_request
+					pull_request,
+					repository
 				}
 			}
 		} = github
@@ -20,11 +21,10 @@ async function run() {
 		});
 
 		const comments = await octokit.request(commentsUrl)
-		const repo = github.repository.replace(/.*\//, '')
-		const owner = github.repository.replace(/\/.*/, '')
+
 		octokit.repos.createOrUpdateFile({
-		  owner,
-		  repo,
+		  owner: repository.owner.login,
+		  repo: repository.name,
 		  path: '.storage',
 		  message: 'Add context for PR ' + pull_request.number,
 		  content: btoa(JSON.stringify(comments))
