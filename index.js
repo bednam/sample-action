@@ -20,7 +20,13 @@ async function run() {
 			previews: ["comfort-fade-preview", "everest-preview"]
 		});
 
-		const comments = await octokit.request(commentsUrl)
+		const commentsRes = await octokit.request(commentsUrl)
+		const comments = commentsRes.data.map(comment => ({
+			path: comment.path,
+			user: comment.user.login,
+			body: comment.body,
+			line: comment.line
+		}))
 		const content = Buffer.from(JSON.stringify(comments)).toString('base64')
 
 		octokit.repos.createOrUpdateFile({
