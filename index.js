@@ -17,8 +17,8 @@ async function run() {
 		const commentsUrl = pull_request._links.review_comments.href
 		const commentsEndpoint = commentsUrl.replace('https://api.github.com', '')
 
-		const myToken = core.getInput('myToken');
-		const octokit = new github.GitHub(myToken, {
+		const repoToken = core.getInput('repo-token');
+		const octokit = new github.GitHub(repoToken, {
 			previews: ["comfort-fade-preview", "everest-preview"]
 		});
 
