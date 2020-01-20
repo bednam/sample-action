@@ -3,6 +3,9 @@ const github = require('@actions/github');
 
 async function run() {
 	try {
+		core.setOutput("comments", [{"path":"b6.txt","user":"MichalBednarz","body":"asdfa","line":3},{"path":"b6.txt","user":"MichalBednarz","body":"asdfads","line":5}]);
+		return
+		// TEMP IGNORE
 		const {
 			context: {
 				payload: {
