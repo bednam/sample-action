@@ -12,7 +12,7 @@ async function run() {
 			}
 		} = github
 
-		if(!pull_request.merged) return
+		if(!pull_request || !pull_request.merged) return
 
 		const commentsUrl = pull_request._links.review_comments.href
 		const commentsEndpoint = commentsUrl.replace('https://api.github.com', '')
