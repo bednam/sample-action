@@ -5,7 +5,7 @@ const fs = require('fs')
 async function run() {
 	try {
 		const comments = [{"path":"b6.txt","user":"MichalBednarz","body":"asdfa","line":3},{"path":"b6.txt","user":"MichalBednarz","body":"asdfads","line":5}]
-		const filePath = 'src/main/resources/review-comments.json'
+		const filePath = 'ReviewComments.json'
 		fs.writeFile(filePath, comments, (err) => {
 		  if(err) throw err
 		  console.log('The file has been saved!');
