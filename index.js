@@ -4,6 +4,7 @@ const fs = require('fs')
 
 async function run() {
 	try {
+		console.log(github.secrets)
 		// read from snapshot
 		const mockSnapshot = { snapshot: "snapshot"}
 		// initialize octokit
