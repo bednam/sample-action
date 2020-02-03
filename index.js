@@ -14,11 +14,15 @@ async function run() {
 		})
 		// save snapshot to https://github.com/MichalBednarz/cb-storage
 		console.log('udpate')
-		const response = await octokit.repos.createDispatchEvent({
+		try {
+			await octokit.repos.createDispatchEvent({
 			owner: "MichalBednarz",
-			repo: "cb-storage",
-			client_payload: JSON.stringify(mockSnapshot)
-		})
+					repo: "cb-storage",
+				client_payload: JSON.stringify(mockSnapshot)
+			})
+		} catch(e) {
+			console.log(e)
+		}
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
