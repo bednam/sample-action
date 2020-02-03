@@ -9,7 +9,9 @@ async function run() {
 		// initialize octokit
 		// how to handle storage repo token?
 		const repoToken = core.getInput('repo-token')
-		const octokit = new github.GitHub(repoToken)
+		const octokit = new github.GitHub(repoToken, {
+			previews: ["comfort-fade-preview", "everest-preview"]
+		})
 		// save snapshot to https://github.com/MichalBednarz/cb-storage
 		const response = await octokit.repos.createDispatchEvent({
 			owner: "MichalBednarz",
