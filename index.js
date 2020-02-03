@@ -5,7 +5,7 @@ const fs = require('fs')
 async function run() {
 	try {
 		// read from snapshot
-		const snapshot = fs.readdir('./snapshot', (err, files) => {
+		const snapshot = fs.readdir('/home/runner/work/sbt-action/sbt-action', (err, files) => {
 			if(err) console.log(err)
 			
 			return files
