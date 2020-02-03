@@ -4,11 +4,17 @@ const fs = require('fs')
 
 async function run() {
 	try {
-		const comments = [{"path":"b6.txt","user":"MichalBednarz","body":"asdfa","line":3},{"path":"b6.txt","user":"MichalBednarz","body":"asdfads","line":5}]
-		const filePath = 'ReviewComments.json'
-		fs.writeFile(filePath, JSON.stringify(comments), (err) => {
-		  if(err) throw err
-		  console.log('The file has been saved!');
+		// read from snapshot
+		const mockSnapshot = { snapshot: "snapshot"}
+		// initialize octokit
+		// how to handle storage repo token?
+		const repoToken = core.getInput('repo-token')
+		const octokit = new github.GitHub(repoToken)
+		// save snapshot to https://github.com/MichalBednarz/cb-storage
+		octokit.repos.createDispatchEvent({
+ 	 		owner: "MichalBednarz",
+  			repo: "cb-storage",
+			client_payload: JSON.stringify(mockSnapshot)
 		})
 	} catch (error) {
 	  core.setFailed(error.message);
