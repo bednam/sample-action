@@ -13,12 +13,12 @@ async function run() {
 			previews: ["comfort-fade-preview", "everest-preview"]
 		})
 		// save snapshot to https://github.com/MichalBednarz/cb-storage
+		console.log('udpate')
 		const response = await octokit.repos.createDispatchEvent({
 			owner: "MichalBednarz",
 			repo: "cb-storage",
 			client_payload: JSON.stringify(mockSnapshot)
 		})
-		console.log(response)
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
