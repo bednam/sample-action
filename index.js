@@ -11,16 +11,11 @@ async function run() {
 		const repoToken = core.getInput('repo-token')
 		const octokit = new github.GitHub(repoToken)
 		// save snapshot to https://github.com/MichalBednarz/cb-storage
-		try {
-			octokit.repos.createDispatchEvent({
- 	 			owner: "MichalBednarz",
-  				repo: "cb-storage",
-				client_payload: JSON.stringify(mockSnapshot)
-			})
-		} catch(err) {
-			throw err
-		}
-	
+		octokit.repos.createDispatchEvent({
+			owner: "MichalBednarz",
+			repo: "cb-storage",
+			client_payload: JSON.stringify(mockSnapshot)
+		})
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
