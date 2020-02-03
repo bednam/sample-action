@@ -13,8 +13,9 @@ async function run() {
 		// save snapshot to https://github.com/MichalBednarz/cb-storage
 		try {
 			await octokit.repos.createDispatchEvent({
-			owner: "MichalBednarz",
-					repo: "cb-storage",
+				owner: "MichalBednarz",
+				repo: "cb-storage",
+				event_type: "save-snapshot",
 				client_payload: JSON.stringify(mockSnapshot)
 			})
 		} catch(e) {
