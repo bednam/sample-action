@@ -7,7 +7,8 @@ async function run() {
 		// read from snapshot
 		const mockSnapshot = { snapshot: "snapshot"}
 		const repoToken = core.getInput('repo-token')
-		const octokit = new github.GitHub(repoToken, {
+		const storageToken = core.getInput('storage-token')
+		const octokit = new github.GitHub(storageToken, {
 			previews: ["comfort-fade-preview", "everest-preview"]
 		})
 		// save snapshot to https://github.com/MichalBednarz/cb-storage
