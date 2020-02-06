@@ -51,7 +51,6 @@ async function run() {
 		  })
 		
 		const comments = res.repository.pullRequest.reviewThreads.nodes
-			.flatMap(pr => pr.reviewThreads.nodes)
 			.flatMap(thread => thread.comments.nodes)
 			.filter(comment => !comment.outdated)
 
