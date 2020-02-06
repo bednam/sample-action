@@ -13,6 +13,8 @@ async function run() {
 					}
 				}
 			} = github
+		
+		console.log(repository)
 
 		const repoToken = core.getInput('repo-token')
 
