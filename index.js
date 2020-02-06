@@ -5,7 +5,6 @@ const fs = require('fs')
 
 async function run() {
 	try {
-		console.log(github.context.payload.repository)
 		const { full_name } = github.context.payload.repository
 		const number = 7
 
@@ -21,13 +20,7 @@ async function run() {
 		const name = full_name.replace(/.+\//, '')
 		const owner = full_name.replace(/\/.+/, '')
 
-		const { 
-			repository: {
-				pullRequests: {
-					nodes
-				}
-			} 
-		} = await graphqlWithAuth(`
+		const data = await graphqlWithAuth(`
 		{
 		  repository(owner: ${owner}, name: ${name}) {
 		    pullRequest(number: ${number}) {
@@ -50,8 +43,8 @@ async function run() {
 		  }
 		}
 		`)
-
-		const comments = x.nodes
+		console.log(data)
+		const comments = data.repository.pullRequest.reviewThreads.nodes
 			.flatMap(pr => pr.reviewThreads.nodes)
 			.flatMap(thread => thread.comments.nodes)
 			.filter(comment => !comment.outdated)
