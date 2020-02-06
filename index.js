@@ -45,7 +45,7 @@ async function run() {
 		  })
 		
 		const comments = res.repository.pullRequest.reviewThreads.nodes
-			.flatMap(thread => thread.comments.nodes.map(node => ({...node, line: thread.line}))
+			.flatMap(thread => thread.comments.nodes.map(node => ({...node, line: thread.line})))
 			.filter(comment => !comment.outdated)
 			.map(({ body, author: { login }, line, path}) => ({ body, user: login, line, path }))
 
