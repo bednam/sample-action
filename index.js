@@ -28,27 +28,27 @@ async function run() {
 				}
 			} 
 		} = await graphqlWithAuth(`
-		  {
-		    repository(owner: ${owner}, name: ${name}) {
-		    	pullRequest(number: ${number}) { 
-				reviewThreads(first: 10){
-		    	      nodes {
-		    	        comments(first: 50) {
-		    	          nodes {
-		    	            body
-		    	            author {
-		    	              login
-		    	            }
-		    	            originalPosition
-		    	            path
-		    	            outdated
-		    	          }
-		    	        }
-		    	      }
-		    	    }
-				}
+		{
+		  repository(owner: ${owner}, name: ${name}) {
+		    pullRequest(number: ${number}) {
+		      reviewThreads(first: 10) {
+			nodes {
+			  comments(first: 50) {
+			    nodes {
+			      body
+			      author {
+				login
+			      }
+			      originalPosition
+			      path
+			      outdated
+			    }
+			  }
 			}
+		      }
+		    }
 		  }
+		}
 		`)
 
 		const comments = x.nodes
