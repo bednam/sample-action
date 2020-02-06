@@ -7,9 +7,9 @@ async function run() {
 	try {
 		const {
 				context: {
-					repository,
 					payload: {
-						number
+						number,
+						repository
 					}
 				}
 			} = github
