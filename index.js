@@ -24,7 +24,7 @@ async function run() {
 				            author {
 				              login
 				            }
-				            line
+				            position
 				            path
 				            outdated
 				          }
