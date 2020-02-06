@@ -49,11 +49,8 @@ async function run() {
     			authorization: `token ${repoToken}`
   		    }
 		  })
-		console.log(res)
-		console.log(res.data)
-		console.log(res.data.repository)
-		console.log(res.data.repository.pullRequest)
-		const comments = data.repository.pullRequest.reviewThreads.nodes
+		
+		const comments = res.repository.pullRequest.reviewThreads.nodes
 			.flatMap(pr => pr.reviewThreads.nodes)
 			.flatMap(thread => thread.comments.nodes)
 			.filter(comment => !comment.outdated)
