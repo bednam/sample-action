@@ -7,6 +7,7 @@ async function run() {
 	try {
 		console.log(github.context.payload.repository)
 		const { full_name } = github.context.payload.repository
+		const number = 7
 
 		const repoToken = core.getInput('repo-token')
 
@@ -29,10 +30,10 @@ async function run() {
 		} = await graphqlWithAuth(`
 		  {
 		    repository(owner: ${owner}, name: ${name}) {
-		    	pullRequest(number: 7) { 
-		    	  	reviewThreads(first:10){
+		    	pullRequest(number: ${number}) { 
+				reviewThreads(first: 10){
 		    	      nodes {
-		    	        comments(first:50) {
+		    	        comments(first: 50) {
 		    	          nodes {
 		    	            body
 		    	            author {
@@ -45,7 +46,8 @@ async function run() {
 		    	        }
 		    	      }
 		    	    }
-		    	}
+				}
+			}
 		  }
 		`)
 
