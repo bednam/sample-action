@@ -22,29 +22,32 @@ async function run() {
 		const owner = full_name.replace(/\/.+/, '')
 		console.log(name)
 		console.log(owner)
-		const res = await graphqlWithAuth(`
-		{
-		  repository(owner: ${owner}, name: ${name}) {
-		    pullRequest(number: ${number}) {
-		      reviewThreads(first: 10) {
-			nodes {
-			  comments(first: 50) {
-			    nodes {
-			      body
-			      author {
-				login
-			      }
-			      originalPosition
-			      path
-			      outdated
-			    }
-			  }
-			}
-		      }
-		    }
-		  }
-		}
-		`)
+
+		const res = await graphql(`query Query($owner: String!, $repo: String!, $number: Int!) {
+			repository(owner: $owner, name: $repo) {
+				pullRequest(number: $number) { 
+				  	reviewThreads(first:10){
+				      nodes {
+				        comments(first:50) {
+				          nodes {
+				            body
+				            author {
+				              login
+				            }
+				            originalPosition
+				            path
+				            outdated
+				          }
+				        }
+				      }
+				    }
+				}
+		  }`, 
+		  {
+		    owner,
+		    repo,
+		    number
+		  })
 		console.log(res)
 		console.log(res.data)
 		console.log(res.data.repository)
