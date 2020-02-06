@@ -31,7 +31,7 @@ async function run() {
 				            author {
 				              login
 				            }
-				            originalPosition
+				            line
 				            path
 				            outdated
 				          }
@@ -53,6 +53,7 @@ async function run() {
 		const comments = res.repository.pullRequest.reviewThreads.nodes
 			.flatMap(thread => thread.comments.nodes)
 			.filter(comment => !comment.outdated)
+			.map(({ body, author: { login }, line, path}) => ({ body, user: login, line, path }))
 
 		const filePath = 'ReviewComments.json'
 		fs.writeFile(filePath, JSON.stringify(comments), (err) => {
