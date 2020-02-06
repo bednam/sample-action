@@ -5,16 +5,9 @@ const fs = require('fs')
 
 async function run() {
 	try {
-		const {
-				context: {
-					payload: {
-						number,
-						repository
-					}
-				}
-			} = github
 		
-		console.log(repository)
+		
+		console.log(github.context)
 
 		const repoToken = core.getInput('repo-token')
 
