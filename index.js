@@ -5,7 +5,6 @@ const fs = require('fs')
 
 async function run() {
 	try {
-		console.log('log')
 		const { full_name } = github.context.payload.repository
 		const number = 7
 
@@ -20,8 +19,6 @@ async function run() {
 
 		const repo = full_name.replace(/.+\//, '')
 		const owner = full_name.replace(/\/.+/, '')
-		console.log(name)
-		console.log(owner)
 
 		const res = await graphql(`query Query($owner: String!, $repo: String!, $number: Int!) {
 			repository(owner: $owner, name: $repo) {
