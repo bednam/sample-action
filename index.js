@@ -10,13 +10,6 @@ async function run() {
 
 		const repoToken = core.getInput('repo-token')
 
-		const graphqlWithAuth = graphql.defaults({
-		  headers: {
-		    authorization: `token ${repoToken}`
-		  },
-		  previews: ["comfort-fade-preview"]
-		})
-
 		const repo = full_name.replace(/.+\//, '')
 		const owner = full_name.replace(/\/.+/, '')
 
@@ -46,7 +39,8 @@ async function run() {
 		    repo,
 		    number,
 		    headers: {
-    			authorization: `token ${repoToken}`
+    			authorization: `token ${repoToken}`,
+		        accept: 'application/vnd.github.comfort-fade-preview+json'
   		    }
 		  })
 		
