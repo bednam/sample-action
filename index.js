@@ -23,7 +23,7 @@ async function run() {
 		})
 
 		const name = github.repository.replace(/.+\//, '')
-		const owner = github.repository.replace(\/.+, '')
+		const owner = github.repository.replace(/\/.+/, '')
 
 		const { 
 			repository: {
