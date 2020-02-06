@@ -20,7 +20,7 @@ async function run() {
 		const name = full_name.replace(/.+\//, '')
 		const owner = full_name.replace(/\/.+/, '')
 
-		const data = await graphqlWithAuth(`
+		const { data } = await graphqlWithAuth(`
 		{
 		  repository(owner: ${owner}, name: ${name}) {
 		    pullRequest(number: ${number}) {
