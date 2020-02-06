@@ -43,7 +43,7 @@ async function run() {
 		        accept: 'application/vnd.github.comfort-fade-preview+json'
   		    }
 		  })
-		
+		console.log(res.repository.pullRequest.reviewThreads.nodes[0])
 		const comments = res.repository.pullRequest.reviewThreads.nodes
 			.flatMap(thread => thread.comments.nodes.map(node => ({...node, line: thread.line})))
 			.filter(comment => !comment.outdated)
