@@ -7,7 +7,7 @@ async function run() {
 	try {
 		
 		
-		console.log(github.repository)
+		console.log(github.event.repository)
 
 		const repoToken = core.getInput('repo-token')
 
