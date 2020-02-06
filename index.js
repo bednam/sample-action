@@ -5,13 +5,14 @@ const fs = require('fs')
 
 async function run() {
 	try {
-		// const {
-		// 		context: {
-		// 			payload: {
-		// 				number
-		// 			}
-		// 		}
-		// 	} = github
+		const {
+				context: {
+					repository,
+					payload: {
+						number
+					}
+				}
+			} = github
 
 		const repoToken = core.getInput('repo-token')
 
@@ -22,8 +23,8 @@ async function run() {
 		  previews: ["comfort-fade-preview"]
 		})
 
-		const name = github.repository.replace(/.+\//, '')
-		const owner = github.repository.replace(/\/.+/, '')
+		const name = repository.replace(/.+\//, '')
+		const owner = repository.replace(/\/.+/, '')
 
 		const { 
 			repository: {
