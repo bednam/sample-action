@@ -5,6 +5,7 @@ const fs = require('fs')
 
 async function run() {
 	try {
+		console.log('log')
 		const { full_name } = github.context.payload.repository
 		const number = 7
 
