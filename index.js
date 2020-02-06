@@ -20,7 +20,7 @@ async function run() {
 		const name = full_name.replace(/.+\//, '')
 		const owner = full_name.replace(/\/.+/, '')
 
-		const { data } = await graphqlWithAuth(`
+		const res = await graphqlWithAuth(`
 		{
 		  repository(owner: ${owner}, name: ${name}) {
 		    pullRequest(number: ${number}) {
@@ -43,7 +43,10 @@ async function run() {
 		  }
 		}
 		`)
-		console.log(data)
+		console.log(res)
+		console.log(res.data)
+		console.log(res.data.repository)
+		console.log(res.data.repository.pullRequest)
 		const comments = data.repository.pullRequest.reviewThreads.nodes
 			.flatMap(pr => pr.reviewThreads.nodes)
 			.flatMap(thread => thread.comments.nodes)
