@@ -43,7 +43,10 @@ async function run() {
 		  {
 		    owner,
 		    repo,
-		    number
+		    number,
+		    headers: {
+    			authorization: `token ${repoToken}`
+  		    }
 		  })
 		console.log(res)
 		console.log(res.data)
