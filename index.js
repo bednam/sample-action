@@ -18,7 +18,7 @@ async function run() {
 		  previews: ["comfort-fade-preview"]
 		})
 
-		const name = full_name.replace(/.+\//, '')
+		const repo = full_name.replace(/.+\//, '')
 		const owner = full_name.replace(/\/.+/, '')
 		console.log(name)
 		console.log(owner)
