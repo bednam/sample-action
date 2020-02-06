@@ -5,8 +5,8 @@ const fs = require('fs')
 
 async function run() {
 	try {
-		
-		const { full_name } = github.event.repository
+		console.log(github)
+		const { full_name } = github
 
 		const repoToken = core.getInput('repo-token')
 
