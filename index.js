@@ -6,8 +6,7 @@ const fs = require('fs')
 async function run() {
 	try {
 		
-		
-		console.log(github.event.repository)
+		const { full_name } = github.event.repository
 
 		const repoToken = core.getInput('repo-token')
 
@@ -18,8 +17,8 @@ async function run() {
 		  previews: ["comfort-fade-preview"]
 		})
 
-		const name = repository.replace(/.+\//, '')
-		const owner = repository.replace(/\/.+/, '')
+		const name = full_name.replace(/.+\//, '')
+		const owner = full_name.replace(/\/.+/, '')
 
 		const { 
 			repository: {
